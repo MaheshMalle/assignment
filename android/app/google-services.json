@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "476174848589",
+    "project_id": "settyl-assignment-780a9",
+    "storage_bucket": "settyl-assignment-780a9.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:476174848589:android:f5d2c9ed3cabad09080204",
+        "android_client_info": {
+          "package_name": "com.example.settyl_assignment"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "476174848589-m88m4d4j4u4kahdog1kb5spiail7aodr.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAmS7LDYGfSGturawyCiS0ClHjY7fnSMnE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "476174848589-m88m4d4j4u4kahdog1kb5spiail7aodr.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
