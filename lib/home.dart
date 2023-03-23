@@ -1,6 +1,9 @@
+import 'dart:async';
 import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
+import 'package:google_maps_flutter/google_maps_flutter.dart';
+import 'package:settyl_assignment/map.dart';
 
 class Home extends StatefulWidget {
   final String email;
@@ -25,6 +28,16 @@ class _HomeState extends State<Home> with SingleTickerProviderStateMixin {
   late TabController _tabController;
   final updateNamecontroller = TextEditingController();
   final updateNumbercontroller = TextEditingController();
+
+  final LatLng _center = const LatLng(45.521563, -122.677433);
+  late GoogleMapController _controller;
+
+  void _onMapCreated(GoogleMapController controller) {
+    _controller = controller;
+  }
+
+
+  
 
   late DatabaseReference dbRef;
 
@@ -145,15 +158,15 @@ class _HomeState extends State<Home> with SingleTickerProviderStateMixin {
               ],
             ),
           ),
-          Column(
-            children: [
-              Text('Address: 123 Main St.'),
-              Text('City: Anytown'),
-              Text('State: CA'),
-              Text('Zip Code: 12345'),
-              // add more widgets here
-            ],
-          ),
+          Center(child: ElevatedButton(onPressed: () { 
+            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => MapScreen(),
+                              ),
+                            );
+           },
+          child: Text("Go to map")),)
         ],
       ),
     );
