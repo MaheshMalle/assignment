@@ -4,6 +4,9 @@
         android:label="settyl_assignment"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
+
+        <meta-data android:name="com.google.android.geo.API_KEY"
+        android:value="AIzaSyD2Vpbc6wTVsQpWjqf9au8gby00ACppMqs"/>
         <activity
             android:name=".MainActivity"
             android:exported="true"
@@ -21,8 +24,6 @@
               android:resource="@style/NormalTheme"
               />
 
-              <meta-data android:name="com.google.android.geo.API_KEY"
-        android:value="AIzaSyD2Vpbc6wTVsQpWjqf9au8gby00ACppMqs"/>
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
                 <category android:name="android.intent.category.LAUNCHER"/>

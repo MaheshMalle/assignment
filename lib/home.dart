@@ -1,9 +1,7 @@
-import 'dart:async';
 import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
-import 'package:settyl_assignment/map.dart';
 
 class Home extends StatefulWidget {
   final String email;
@@ -28,18 +26,9 @@ class _HomeState extends State<Home> with SingleTickerProviderStateMixin {
   late TabController _tabController;
   final updateNamecontroller = TextEditingController();
   final updateNumbercontroller = TextEditingController();
+  final addresscontroller = TextEditingController();
 
-  final LatLng _center = const LatLng(45.521563, -122.677433);
-  late GoogleMapController _controller;
-
-  void _onMapCreated(GoogleMapController controller) {
-    _controller = controller;
-  }
-
-
-  
-
-  late DatabaseReference dbRef;
+  DatabaseReference dbRef = FirebaseDatabase.instance.ref();
 
   @override
   void initState() {
@@ -57,7 +46,8 @@ class _HomeState extends State<Home> with SingleTickerProviderStateMixin {
   Widget build(BuildContext context) {
     updateNamecontroller.text = widget.name;
     updateNumbercontroller.text = widget.phone;
-    
+    addresscontroller.text = "chennai";
+
     return Scaffold(
       appBar: AppBar(
         title: const Text('My App'),
@@ -158,15 +148,36 @@ class _HomeState extends State<Home> with SingleTickerProviderStateMixin {
               ],
             ),
           ),
-          Center(child: ElevatedButton(onPressed: () { 
-            Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                builder: (context) => MapScreen(),
-                              ),
-                            );
-           },
-          child: Text("Go to map")),)
+          Column(
+            children: [
+              SizedBox(
+                height: 10,
+              ),
+              TextFormField(
+                decoration: InputDecoration(
+                  labelText: 'address',
+                  border: OutlineInputBorder(),
+                ),
+              ),
+              SizedBox(height: 20.0),
+              ElevatedButton(
+                  onPressed: () {}, child: Text("Conform the address")),
+              SizedBox(height: 20.0),
+              Expanded(
+                child: Container(
+                  margin: EdgeInsets.symmetric(horizontal: 5),
+                  child: GoogleMap(
+                    //mapType: MapType.normal,
+                    //onMapCreated: _onMapCreated,
+                    initialCameraPosition: CameraPosition(
+                      target: LatLng(13.067439, 80.237617),
+                      zoom: 11.0,
+                    ),
+                  ),
+                ),
+              ),
+            ],
+          ),
         ],
       ),
     );
